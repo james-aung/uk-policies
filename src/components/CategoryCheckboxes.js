@@ -9,7 +9,7 @@ function CategoryCheckboxes({ categories, selectedCategories, handleCategoryChan
             <button
               key={category}
               onClick={() => handleCategoryChange(category)}
-              className={`px-2 py-1 m-1 rounded-full text-xs font-medium border-2 ${selectedCategories.includes(category) ? 'bg-green-600 border-green-600' : 'bg-transparent border-green-600'}`}
+              className={`px-2 py-1 m-1 rounded-full text-sm font-medium border-2 ${selectedCategories.includes(category) ? 'bg-green-600 border-green-600' : 'bg-transparent border-green-600'}`}
             >
               {category}
             </button>
