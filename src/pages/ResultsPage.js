@@ -29,7 +29,13 @@ function ResultsPage({ data, currentIndex, handleButtonClick }) {
       return acc;
     }, {});
 
-    return Object.keys(countByParty).map(party => {
+    const sortedParties = Object.keys(countByParty).sort((a, b) => {
+      const netApprovalA = countByParty[a].approve - countByParty[a].disapprove;
+      const netApprovalB = countByParty[b].approve - countByParty[b].disapprove;
+      return netApprovalB - netApprovalA;
+    });
+
+    return sortedParties.map(party => {
       const approvePercentage = (countByParty[party].approve / countByParty[party].total) * 100;
       const disapprovePercentage = (countByParty[party].disapprove / countByParty[party].total) * 100;
       const noOpinionPercentage = (countByParty[party].no_opinion / countByParty[party].total) * 100;
