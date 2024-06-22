@@ -6,7 +6,11 @@ const CategoryContext = createContext();
 export const useCategories = () => useContext(CategoryContext);
 
 export const CategoryProvider = ({ children }) => {
-  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState(() => {
+    // Retrieve categories from local storage at initial load
+    const savedCategories = localStorage.getItem('selectedCategories');
+    return savedCategories ? JSON.parse(savedCategories) : [];
+  });
   const navigate = useNavigate(); // Initialize navigate
 
   useEffect(() => {
@@ -14,6 +18,11 @@ export const CategoryProvider = ({ children }) => {
       navigate('/categories'); // Navigate when selectedCategories is empty
     }
   }, [selectedCategories, navigate]); // Add navigate to dependency array
+
+  useEffect(() => {
+    // Save selectedCategories to local storage whenever they change
+    localStorage.setItem('selectedCategories', JSON.stringify(selectedCategories));
+  }, [selectedCategories]);
 
   const handleCategoryChange = (category) => {
     setSelectedCategories(prevSelected => 
