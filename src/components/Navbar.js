@@ -6,7 +6,7 @@ function Navbar({ onReset }) {
         <div className="container mx-auto flex justify-between items-center">
           <Link to="/" className="text-lg font-bold">Swipe on Policies</Link>
           <div>
-            <Link to="/results" className="text-white px-3 py-2 rounded-md text-sm font-medium">Results</Link>
+            <Link to="/results" className="bg-green-500 text-white px-3 py-2 rounded-md text-sm font-medium">See Results</Link>
             <Link to="/categories" className="text-white px-3 py-2 rounded-md text-sm font-medium">Categories</Link>
             <button onClick={onReset} className="text-white px-3 py-2 rounded-md text-sm font-medium">Reset</button>
           </div>
