@@ -1,10 +1,11 @@
 import React from 'react';
 
 function CategoryCheckboxes({ categories, selectedCategories, handleCategoryChange }) {
+    const sortedCategories = [...categories].sort();
     return (
       <div>
         <div className="container mx-auto flex flex-wrap justify-center items-center">
-          {categories.map(category => (
+          {sortedCategories.map(category => (
             <button
               key={category}
               onClick={() => handleCategoryChange(category)}
